@@ -17,13 +17,17 @@ import com.slot.repository.EmployeeRepository;
 @Service
 public class EmployeeService {
 	@Autowired
-	EmployeeRepository empRepository;
+	EmployeeRepository repository;
 	
 	private static final org.jboss.logging.Logger logger=LoggerFactory.logger(EmployeeService.class);
 	
 	
+	public Employee retrieve(int employeeId) {
+		// TODO Auto-generated method stub
+		return repository.getOne(employeeId);
+	}
 	public List<Employee> findByAllemp() throws RecordNotFoundException {
-		List<Employee> emplist=empRepository.findAll();
+		List<Employee> emplist=repository.findAll();
 		if(emplist.size()==0) {
 			logger.debug("No employee Records");
 			throw new RecordNotFoundException("No employee Records");
@@ -31,6 +35,5 @@ public class EmployeeService {
 		return emplist;
 	}
 
-
-
+	
 }

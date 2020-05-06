@@ -32,6 +32,11 @@ public class EmployeeController {
 	
 	private static final Logger logger=LoggerFactory.getLogger(EmployeeController.class);
 	
+	@GetMapping("/employeeId}")
+	public ResponseEntity<Employee> getEmployeeByID(@PathVariable("employeeId") int employeeId) {
+		return new ResponseEntity<>(service.retrieve(employeeId), HttpStatus.OK);
+		
+	}
 	
 	
 	@GetMapping("/details")
